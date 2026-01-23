@@ -1,89 +1,113 @@
-![Profile Views](https://komarev.com/ghpvc/?username=rakshith-m&label=Profile%20Views&color=red&style=flat)
+# 🐍 100 Days Python Challenge
 
-<h1 align="center">Hi 👋, I'm Rakshith M</h1>
-<h3 align="center">Site Reliability Engineer | DevOps | Data Platforms</h3>
-
----
-
-### 👨‍💻 About Me
-
-- 🔭 Currently working at **Accenture** as **Security Delivery Analyst (DevOps / SRE)**
-- 🏦 Experience in **Banking & Insurance domains**
-- 🧠 Strong focus on **Reliability, Observability & Automation**
-- 🎓 MCA (Artificial Intelligence)
-- 📍 Bengaluru, India
+👩‍🏫 **Learning Mentor:** ChatGPT (as Teacher & Code Reviewer)  
+📘 **Primary Course:** Dr. Angela Yu – *100 Days of Code: The Complete Python Pro Bootcamp*  
+🎯 **Purpose:** Learn Python from basics to advanced through consistent daily practice
 
 ---
 
-### 📫 Reach Me At
-- 📧 **Email:** rakshith.09m@gmail.com  
-- 💼 **LinkedIn:** https://www.linkedin.com/in/rakshith-m-963b1526a  
+## 📌 About This Repository
+
+This repository documents my **Python learning journey** following a  
+**100-Day Python Learning Roadmap**.
+
+I am learning Python by:
+- Studying concepts daily
+- Implementing them through **mini projects**
+- Using **ChatGPT as a teacher** for:
+  - Concept explanations
+  - Code templates (not full solutions)
+  - Code review & feedback
+- Aligning learning with **Dr. Angela Yu’s structured curriculum**
+
+This repository focuses on **learning, clarity, and best practices**, not shortcuts.
 
 ---
 
-### 🤝 Connect With Me
-<p align="left">
-<a href="https://www.linkedin.com/in/rakshith-m-963b1526a" target="_blank">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" width="40" height="40"/>
-</a>
-</p>
+## 🗂️ Repository Structure
+100-days-python-challenge/
+│
+├── README.md # Project overview (this file)
+├── Day01/
+├── Day02/
+├── Day03/
+├── ...
+└── Day100/
+
+
+
+Each `DayXX` folder contains:
+- Python practice files
+- A day-specific README
+- One mini project (when applicable)
 
 ---
 
-### 🛠️ Languages and Tools
+## 🧠 Learning Methodology
 
-<p align="left">
+For **each day**, the following structure is strictly followed:
 
-<!-- Programming -->
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="40" height="40"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" height="40"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" height="40"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/>
+### 🔹 PART 1: Concept Explanation
+- Simple, beginner-friendly explanations
+- What the concept means
+- Why it is used
+- Where it is useful in real life
+- 1–2 small examples only (no project-level code)
 
-<!-- DevOps / CI-CD -->
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" width="40" height="40"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" width="40" height="40"/>
+### 🔹 PART 2: Mini Project Overview
+- What the project does
+- What problem it solves
+- Expected output (sample text)
+- Concepts applied from Part 1
 
-<!-- Monitoring -->
-<img src="https://seeklogo.com/images/S/splunk-logo-2B6F2E6E1B-seeklogo.com.png" width="40" height="40"/>
-<img src="https://seeklogo.com/images/A/appdynamics-logo-38A9F6DCE3-seeklogo.com.png" width="40" height="40"/>
-<img src="https://seeklogo.com/images/D/datadog-logo-0F74E75F14-seeklogo.com.png" width="40" height="40"/>
+### 🔹 PART 3: Code Template Only
+- ❌ No complete solutions
+- ✅ Only skeleton code
+- Uses:
+  - Functions
+  - Comments
+  - TODO markers
+- No shortcuts or hard-coded logic
 
-<!-- Tools -->
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" height="40"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" width="40" height="40"/>
-
-</p>
-
----
-
-### 📌 Key Areas of Expertise
-
-- 🔍 Observability & Monitoring (Splunk, AppDynamics, Datadog)
-- ☁️ Cloud Operations (GCP, BigQuery, Cloud Storage)
-- ⚙️ CI/CD & DevOps (Jenkins, Azure DevOps)
-- 🤖 Automation (Python, Power Automate, Azure Functions)
-- 🚨 Incident Management, RCA, SLO / SLA
+### 🔹 PART 4: Code Review
+After I submit my code:
+- ChatGPT reviews correctness
+- Rates the solution out of 10
+- Suggests improvements (no full rewrite)
+- Confirms readiness to move to the next day
 
 ---
 
-### 🏆 Achievements
+## ⚠️ Learning Rules
 
-- ⭐ Star Team Award – TCS (2022, 2023)
-- 🏅 Best Team Award
-- 🏆 DevOps Industry Award 2022
-
----
-
-### 📊 GitHub Stats
-
-<p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=rakshith-m&show_icons=true" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rakshith-m&layout=compact" />
-</p>
+- Difficulty matches the roadmap day
+- Follow Python best practices
+- Avoid unnecessary features
+- Focus on **understanding**, not memorization
+- Consistency is more important than speed
 
 ---
 
-🚀 *Focused on building reliable systems, reducing operational toil,  
-and learning Python deeply through real-world practice.*
+## 🛠️ Tools Used
+- Python 3.x
+- PyCharm
+- Git & GitHub
+- ChatGPT
+
+---
+
+## 🚀 Learning Goal
+
+By the end of this challenge, I aim to:
+- Write clean, readable Python code
+- Build automation scripts
+- Apply Python to **DevOps, SRE, and Data Engineering** use cases
+- Develop strong problem-solving skills
+
+---
+
+⭐ **This repository represents my continuous effort to learn Python,  
+one day and one concept at a time.**
+
+
+
