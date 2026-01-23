@@ -1,114 +1,61 @@
-# 🐍 100 Days Python Challenge
+# Python Day 1 – Basics & Mini Projects 🐍
 
-👩‍🏫 **Learning Mentor:** ChatGPT (as Teacher & Code Reviewer)  
-📘 **Primary Course:** Dr. Angela Yu – *100 Days of Code: The Complete Python Pro Bootcamp*  
-🎯 **Purpose:** Learn Python from basics to advanced through consistent daily practice
+This repository contains my **Day 1** Python practice from the *100 Days of Code* challenge.
 
 ---
 
-## 📌 About This Repository
+## 📘 Course Information
 
-This repository documents my **Python learning journey** following a  
-**100-Day Python Learning Roadmap**.
+**Primary Course:**  
+100 Days of Code: The Complete Python Pro Bootcamp  
+Instructor: Dr. Angela Yu
 
-I am learning Python by:
-- Studying concepts daily
-- Implementing them through **mini projects**
-- Using **ChatGPT as a teacher** for:
-  - Concept explanations
-  - Code templates (not full solutions)
-  - Code review & feedback
-- Aligning learning with **Dr. Angela Yu’s structured curriculum**
-
-This repository focuses on **learning, clarity, and best practices**, not shortcuts.
+**Learning Guide:**  
+ChatGPT (Teacher & Code Reviewer)
 
 ---
 
-## 🗂️ Repository Structure
-100-days-python-challenge/
-│
-├── README.md # Project overview (this file)
-├── Day01/
-├── Day02/
-├── Day03/
-├── ...
-└── Day100/
+## 📅 Day 1 Overview
 
-
-
-Each `DayXX` folder contains:
-- Python practice files
-- A day-specific README
-- One mini project (when applicable)
+| Day | Topics | Mini Project / Challenge |
+|-----|--------|--------------------------|
+| Day 1 | Variables, Input, Strings, Debugging | Band Name Generator |
+| Day 1 | Python Intro, Print, Variables, Input/Output | Hello World Enhancer |
 
 ---
 
-## 🧠 Learning Methodology
+## 🧠 Topics Covered
 
-For **each day**, the following structure is strictly followed:
-
-### 🔹 PART 1: Concept Explanation
-- Simple, beginner-friendly explanations
-- What the concept means
-- Why it is used
-- Where it is useful in real life
-- 1–2 small examples only (no project-level code)
-
-### 🔹 PART 2: Mini Project Overview
-- What the project does
-- What problem it solves
-- Expected output (sample text)
-- Concepts applied from Part 1
-
-### 🔹 PART 3: Code Template Only
-- ❌ No complete solutions
-- ✅ Only skeleton code
-- Uses:
-  - Functions
-  - Comments
-  - TODO markers
-- No shortcuts or hard-coded logic
-
-### 🔹 PART 4: Code Review
-After I submit my code:
-- ChatGPT reviews correctness
-- Rates the solution out of 10
-- Suggests improvements (no full rewrite)
-- Confirms readiness to move to the next day
+- Python introduction
+- print() function
+- Variables
+- User input
+- Strings
+- Input and output
+- Basic debugging
 
 ---
 
-## ⚠️ Learning Rules
+## 🛠️ Mini Projects
 
-- Difficulty matches the roadmap day
-- Follow Python best practices
-- Avoid unnecessary features
-- Focus on **understanding**, not memorization
-- Consistency is more important than speed
+### Band Name Generator
+Generates a fun band name using user input to practice variables and string manipulation.
 
----
-
-## 🛠️ Tools Used
-- Python 3.x
-- PyCharm
-- Git & GitHub
-- ChatGPT
+### Hello World Enhancer
+An improved Hello World program that uses user input and personalized output.
 
 ---
 
-## 🚀 Learning Goal
+## ▶️ How to Run
 
-By the end of this challenge, I aim to:
-- Write clean, readable Python code
-- Build automation scripts
-- Apply Python to **DevOps, SRE, and Data Engineering** use cases
-- Develop strong problem-solving skills
+Make sure Python is installed, then run:
+
+python filename.py
 
 ---
 
-⭐ **This repository represents my continuous effort to learn Python,  
-one day and one concept at a time.**
+## 📌 Notes
 
-
+This repository will be updated as I continue my Python learning journey.
 
 
