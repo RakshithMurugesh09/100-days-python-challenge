@@ -1,29 +1,22 @@
+# 100 Days of Code – Python Bootcamp (Day 3) 🚀🐍
 
-# Day 3 Projects - 100 Days of Code
+This repository is part of my journey through Dr. Angela Yu’s *100 Days of Code: The Complete Python Pro Bootcamp*.  
+It focuses on Day 3, where I practiced Python fundamentals, including **conditionals**, **logical operators**, and **string manipulation** through small hands-on projects. 💻✨
 
-## Overview
-This repository contains Python projects completed on **Day 3** of the *100 Days of Code: The Complete Python Pro Bootcamp* by **Dr. Angela Yu**. The focus today was on:
+---
 
-- **Conditionals and Logical Operators**  
-- **String Basics** (indexing, slicing, methods)
+🧠 **Course Information**  
+**Primary Course:** Dr. Angela Yu – 100 Days of Code: The Complete Python Pro Bootcamp  
+**Platform:** Udemy 🎓  
+**Language:** Python 🐍  
 
-## Projects
+---
 
-### 1. Treasure Island Game
-A text-based adventure game where the player makes choices to find the treasure.  
-**Key concepts used:**
-- if, elif, else statements  
-- Logical operators (and, or, not)  
-- User input with input() function  
+📅 **Day 3 Overview**  
 
+| Day | Topics Covered | Mini Project / Challenge |
+|-----|----------------|------------------------|
+| 3   | Conditionals ✅, Logical Operators 🔀 | Treasure Island Game 🏴‍☠️💰 |
+| 3   | Strings basics ✂️📄 (indexing, slicing, methods) | String Formatter 📝✨ |
 
-----------------------------------------------------------
-### 2. String Formatter
-
-A small project to practice string manipulation in Python.
-**Key concepts used:***
-
-- String indexing and slicing
-- Common string methods (upper(), lower(), replace(), etc.)
-- f-strings and string formatting
-
+---
