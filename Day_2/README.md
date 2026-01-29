@@ -22,3 +22,9 @@ It focuses on **Day 2**, where I practiced Python fundamentals through small han
 | 2 | Data Types, Type Casting, Arithmetic Operators | Basic Calculator |
 
 ---
+## 📁 Project Structure
+
+```text
+Day_2/
+├── Tip Calculator
+├── Basic Calculator
