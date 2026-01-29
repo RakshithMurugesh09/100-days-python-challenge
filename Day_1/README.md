@@ -58,4 +58,9 @@ python filename.py
 
 This repository will be updated as I continue my Python learning journey.
 
+## 📁 Project Structure
 
+```text
+Day_1/
+├── Brand Name
+├── Hello World Enhancer
