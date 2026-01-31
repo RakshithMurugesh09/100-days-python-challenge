@@ -1,7 +1,7 @@
 import random  # Importing the random module to use random number generation
 
 # List of guest names
-guest = ["Keerthi", "Rakshith", "Rachu", "Manu", "Teju", "Ravi"]
+guest = ["Rackshi", "Rakshith", "Rachu", "Manu", "Mana", "Pavan"]
 
 # Get the total number of guests
 length_guest = len(guest)
