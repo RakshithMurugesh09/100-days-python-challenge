@@ -13,4 +13,4 @@ while game:
     elif guess_number > secret_number:
         print("Guess number is greater than Secret number\nTry again!!!!")
     else:
-        print("Guess number is less than Secret number\nTry again!!!!")
+        print("Guess number is less than Secret number\n Try again!!!!")
