@@ -31,5 +31,6 @@ def main():
         if new_start == 'y':
             first_number = final_answer
         else:
-            break
+            main()
+
 main()
