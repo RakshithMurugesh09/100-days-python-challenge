@@ -1,7 +1,7 @@
 # 🚀 Day 10 - Python Projects
 
 This folder contains beginner-friendly Python projects created as part of the **💯 100 Days Python Challenge**.
-
+h
 ---
 
 # 📂 Projects Included
