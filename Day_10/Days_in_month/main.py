@@ -18,7 +18,7 @@ days_in_each_month = (
     30,  # September
     31,  # October
     30,  # November
-    31  #
+    31  # December
 )
 
 def check_leap_year(year):
