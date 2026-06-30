@@ -1,28 +1,35 @@
 FILE_NAME = "notes.txt"
 
-
 def add_note():
-    note = input("Enter your note: ")
+    note = input("Enter your note: ").strip()
+
+    if not note:
+        print("❌ Note cannot be empty.\n")
+        return
 
     with open(FILE_NAME, "a") as file:
         file.write(note + "\n")
 
     print("✅ Note saved.\n")
 
-
 def view_notes():
     try:
         with open(FILE_NAME, "r") as file:
+            notes = file.readlines()
+
+            if not notes:
+                print("\n❌ No notes available.\n")
+                return
+
             print("\n===== Notes =====")
 
-            for i, note in enumerate(file, start=1):
+            for i, note in enumerate(notes, start=1):
                 print(f"{i}. {note.strip()}")
 
             print()
 
     except FileNotFoundError:
         print("❌ No notes found.\n")
-
 
 def search_notes():
     keyword = input("Enter keyword to search: ").lower()
@@ -31,7 +38,11 @@ def search_notes():
         found = False
 
         with open(FILE_NAME, "r") as file:
-            for i, note in enumerate(file, start=1):
+            notes = file.readlines()
+
+            print("\n===== Matching Notes =====")
+
+            for i, note in enumerate(notes, start=1):
                 if keyword in note.lower():
                     print(f"{i}. {note.strip()}")
                     found = True
