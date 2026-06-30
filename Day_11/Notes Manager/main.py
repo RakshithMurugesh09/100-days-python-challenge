@@ -96,7 +96,7 @@ def main():
             delete_notes()
 
         elif choice == 5:
-            print("👋 Exiting program.")
+            print(" 👋 Exiting program.")
             break
 
         else:
