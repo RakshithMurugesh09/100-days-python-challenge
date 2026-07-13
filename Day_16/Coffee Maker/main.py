@@ -22,10 +22,10 @@ while is_on:
 
         if drink:
             print(f"You selected {choice}")
-            # TODO:
-            # Check resources
-            # Process payment
-            # Make coffee
+            if (machine.is_resource_sufficient(drink["ingredients"])
+                    and machine.process_payment(drink["cost"])):
+                machine.make_coffee(choice, drink["ingredients"])
+
 
         else:
             print("Invalid choice.")
