@@ -1,54 +1,44 @@
 from art import logo
-from bank_account import BankAccount
+from bankaccount import BankAccount
 
 
 def display_menu():
-    """
-    TODO:
-    Display:
+    print("\n========== MENU ==========")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Display Account Details")
+    print("5. Exit")
 
-    1. Deposit
-    2. Withdraw
-    3. Check Balance
-    4. Display Account Details
-    5. Exit
-    """
-    pass
+    return int(input("\nEnter choice: "))
+
 
 def main():
+    print(logo)
 
-    # TODO:
-    # Print logo
+    bank = BankAccount()
 
-    # TODO:
-    # Create one BankAccount object
+    while True:
+        user_choice = display_menu()
 
-    # TODO:
-    # Run program loop
+        if user_choice == 1:
+            bank.deposit()
 
-        # TODO:
-        # Display menu
+        elif user_choice == 2:
+            bank.withdraw()
 
-        # TODO:
-        # Get user choice
+        elif user_choice == 3:
+            bank.check_balance()
 
-        # TODO:
-        # Deposit
+        elif user_choice == 4:
+            bank.display_details()
 
-        # TODO:
-        # Withdraw
+        elif user_choice == 5:
+            print("\nThank you for using Bank Account System!")
+            break
 
-        # TODO:
-        # Check Balance
-
-        # TODO:
-        # Display Details
-
-        # TODO:
-        # Exit Program
-
-        # TODO:
-        # Invalid Choice
+        else:
+            print("\n❌ Invalid Choice. Please try again.")
 
 
 if __name__ == "__main__":

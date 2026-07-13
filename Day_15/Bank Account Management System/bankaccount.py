@@ -4,45 +4,46 @@ class BankAccount:
     """
 
     def __init__(self):
-        """
-        TODO:
-        - Ask for account holder name
-        - Ask for account number
-        - Ask for initial balance
-        - Store values using self
-        """
-        pass
+        print()
+
+        self.account_holder = input("Enter Account Holder Name: ")
+        self.account_number = input("Enter Account Number: ")
+        self.balance = float(input("Enter Initial Balance: "))
 
     def deposit(self):
-        """
-        TODO:
-        - Ask user for deposit amount
-        - Validate amount
-        - Update balance
-        """
-        pass
+        amount = float(input("\nEnter amount to deposit: "))
+
+        if amount <= 0:
+            print("\n❌ Deposit amount must be greater than 0.")
+            return
+
+        self.balance += amount
+
+        print(f"\n₹{amount:.0f} deposited successfully.")
+        print(f"\nCurrent Balance: ₹{self.balance:.0f}")
 
     def withdraw(self):
-        """
-        TODO:
-        - Ask user for withdrawal amount
-        - Check available balance
-        - Withdraw if possible
-        """
-        pass
+        amount = float(input("\nEnter amount to withdraw: "))
+
+        if amount <= 0:
+            print("\n❌ Withdrawal amount must be greater than 0.")
+            return
+
+        if amount > self.balance:
+            print("\n❌ Insufficient Funds!")
+            return
+
+        self.balance -= amount
+
+        print(f"\n₹{amount:.0f} withdrawn successfully.")
+        print(f"\nCurrent Balance: ₹{self.balance:.0f}")
 
     def check_balance(self):
-        """
-        TODO:
-        - Print current balance
-        """
-        pass
+        print(f"\nCurrent Balance: ₹{self.balance:.0f}")
 
     def display_details(self):
-        """
-        TODO:
-        - Display account holder
-        - Display account number
-        - Display balance
-        """
-        pass
+        print("\n========== ACCOUNT DETAILS ==========\n")
+
+        print(f"Account Holder : {self.account_holder}")
+        print(f"Account Number : {self.account_number}")
+        print(f"Balance         : ₹{self.balance:.0f}")
