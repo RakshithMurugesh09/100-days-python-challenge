@@ -10,7 +10,10 @@ def display_menu():
     print("4. Display Account Details")
     print("5. Exit")
 
-    return int(input("\nEnter choice: "))
+    try:
+        return int(input("Enter choice: "))
+    except ValueError:
+        print("Please enter a valid number.")
 
 
 def main():

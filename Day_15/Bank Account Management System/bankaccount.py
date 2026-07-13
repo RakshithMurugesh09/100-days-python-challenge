@@ -1,49 +1,82 @@
 class BankAccount:
-    """
-    Represents a bank account.
-    """
+    """Represents a bank account."""
 
     def __init__(self):
         print()
 
         self.account_holder = input("Enter Account Holder Name: ")
         self.account_number = input("Enter Account Number: ")
-        self.balance = float(input("Enter Initial Balance: "))
+
+        while True:
+            try:
+                balance = float(input("Enter Initial Balance: ₹"))
+
+                if balance < 0:
+                    print("❌ Initial balance cannot be negative.")
+                    continue
+
+                self.balance = balance
+                break
+
+            except ValueError:
+                print("❌ Please enter a valid amount.")
 
     def deposit(self):
-        amount = float(input("\nEnter amount to deposit: "))
+        """Deposit money into the account."""
 
-        if amount <= 0:
-            print("\n❌ Deposit amount must be greater than 0.")
-            return
+        while True:
+            try:
+                amount = float(input("\nEnter amount to deposit: ₹"))
 
-        self.balance += amount
+                if amount <= 0:
+                    print("❌ Deposit amount must be greater than zero.")
+                    return
 
-        print(f"\n₹{amount:.0f} deposited successfully.")
-        print(f"\nCurrent Balance: ₹{self.balance:.0f}")
+                self.balance += amount
+
+                print(f"\n✅ ₹{amount:.2f} deposited successfully.")
+                print(f"Current Balance: ₹{self.balance:.2f}")
+                return
+
+            except ValueError:
+                print("❌ Please enter a valid amount.")
 
     def withdraw(self):
-        amount = float(input("\nEnter amount to withdraw: "))
+        """Withdraw money from the account."""
 
-        if amount <= 0:
-            print("\n❌ Withdrawal amount must be greater than 0.")
-            return
+        while True:
+            try:
+                amount = float(input("\nEnter amount to withdraw: ₹"))
 
-        if amount > self.balance:
-            print("\n❌ Insufficient Funds!")
-            return
+                if amount <= 0:
+                    print("❌ Withdrawal amount must be greater than zero.")
+                    return
 
-        self.balance -= amount
+                if amount > self.balance:
+                    print("❌ Insufficient balance.")
+                    return
 
-        print(f"\n₹{amount:.0f} withdrawn successfully.")
-        print(f"\nCurrent Balance: ₹{self.balance:.0f}")
+                self.balance -= amount
+
+                print(f"\n✅ ₹{amount:.2f} withdrawn successfully.")
+                print(f"Current Balance: ₹{self.balance:.2f}")
+                return
+
+            except ValueError:
+                print("❌ Please enter a valid amount.")
 
     def check_balance(self):
-        print(f"\nCurrent Balance: ₹{self.balance:.0f}")
+        """Display current balance."""
+
+        print(f"\nCurrent Balance: ₹{self.balance:.2f}")
 
     def display_details(self):
-        print("\n========== ACCOUNT DETAILS ==========\n")
+        """Display account details."""
+
+        print("\n========== ACCOUNT DETAILS ==========")
 
         print(f"Account Holder : {self.account_holder}")
         print(f"Account Number : {self.account_number}")
-        print(f"Balance         : ₹{self.balance:.0f}")
+        print(f"Balance         : ₹{self.balance:.2f}")
+
+        print("=====================================")
