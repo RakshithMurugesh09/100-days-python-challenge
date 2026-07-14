@@ -1,158 +1,49 @@
-class Book:
-    """
-    Represents a single book in the library.
-    """
-
-    def __init__(self):
-        """
-        TODO:
-        - Ask the user for:
-            * Book Title
-            * Author Name
-            * Category
-        - Store them as instance attributes.
-        - Set the book as available by default.
-        """
-        pass
-
-    def display_details(self):
-        """
-        TODO:
-        Display:
-        - Title
-        - Author
-        - Category
-        - Availability Status
-        """
-        pass
-
-    def borrow_book(self):
-        """
-        TODO:
-        - Check if the book is available.
-        - If available:
-            * Mark it as borrowed.
-            * Display success message.
-        - Otherwise:
-            * Display that the book is already borrowed.
-        """
-        pass
-
-    def return_book(self):
-        """
-        TODO:
-        - Check if the book is borrowed.
-        - If borrowed:
-            * Mark it as available.
-            * Display success message.
-        - Otherwise:
-            * Display that the book is already available.
-        """
-        pass
-
-
-def display_logo():
-    """
-    TODO:
-    Display the Library Management System logo.
-    """
-    pass
+from library import Library
 
 
 def display_menu():
-    """
-    TODO:
-    Display:
 
-    1. Add Book
-    2. View All Books
-    3. Search Book
-    4. Borrow Book
-    5. Return Book
-    6. Exit
+    print("""
+1. Add Book
+2. View All Books
+3. Search Book
+4. Borrow Book
+5. Return Book
+6. Exit
+""")
 
-    Return the user's menu choice.
-    """
-    pass
-
-
-def add_book(library):
-    """
-    TODO:
-    - Create a Book object.
-    - Add it to the library list.
-    - Display success message.
-    """
-    pass
-
-
-def view_books(library):
-    """
-    TODO:
-    - If no books exist, display a message.
-    - Otherwise:
-        Loop through the library list.
-        Display every book's details.
-    """
-    pass
-
-
-def search_book(library):
-    """
-    TODO:
-    - Ask the user for a book title.
-    - Search the library list.
-    - If found:
-        Display the book details.
-    - Otherwise:
-        Display 'Book not found'.
-    """
-    pass
-
-
-def borrow_book(library):
-    """
-    TODO:
-    - Ask the user for a book title.
-    - Search for the book.
-    - If found:
-        Call the book's borrow_book() method.
-    - Otherwise:
-        Display 'Book not found'.
-    """
-    pass
-
-
-def return_book(library):
-    """
-    TODO:
-    - Ask the user for a book title.
-    - Search for the book.
-    - If found:
-        Call the book's return_book() method.
-    - Otherwise:
-        Display 'Book not found'.
-    """
-    pass
+    return input("Enter your choice: ")
 
 
 def main():
-    """
-    TODO:
 
-    - Display logo.
+    library = Library()
 
-    - Create an empty library list.
+    while True:
 
-    - Run the program inside a loop.
+        choice = display_menu()
 
-    - Display menu.
+        if choice == "1":
+            library.add_book()
 
-    - Perform the selected operation.
+        elif choice == "2":
+            library.view_books()
 
-    - Exit when the user chooses Exit.
-    """
-    pass
+        elif choice == "3":
+            library.search_book()
+
+        elif choice == "4":
+            library.borrow_book()
+
+        elif choice == "5":
+            library.return_book()
+
+        elif choice == "6":
+            print("Thank you for using the Library Management System.")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
 
 
 if __name__ == "__main__":
