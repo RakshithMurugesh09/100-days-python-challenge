@@ -1,6 +1,5 @@
 import json
 
-
 def add_profile():
     try:
         while True:
