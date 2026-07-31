@@ -1,54 +1,42 @@
 from turtle import Turtle, Screen
-import time
 
-MOMENT = 10
+MOVE_DISTANCE = 10
+TURN_ANGLE = 10
 
-UP = 90
-DOWN = 270
-RIGHT = 0
-LEFT = 180
-
-turtle = Turtle(shape="turtle")
-turtle.penup()
-
-
-def move_up():
-    if turtle.heading() != DOWN:
-        turtle.setheading(UP)
-
-
-def move_down():
-    if turtle.heading() != UP:
-        turtle.setheading(DOWN)
-
-
-def move_right():
-    if turtle.heading() != LEFT:
-        turtle.setheading(RIGHT)
-
-
-def move_left():
-    if turtle.heading() != RIGHT:
-        turtle.setheading(LEFT)
-
-
+tim = Turtle()
 screen = Screen()
-screen.setup(width=800, height=600)
-screen.bgcolor("white")
-screen.title("Etch A Sketch")
+
+screen.title("Etch-A-Sketch")
+
+
+def move_forward():
+    tim.forward(MOVE_DISTANCE)
+
+
+def move_backward():
+    tim.backward(MOVE_DISTANCE)
+
+
+def turn_left():
+    tim.left(TURN_ANGLE)
+
+
+def turn_right():
+    tim.right(TURN_ANGLE)
+
+
+def clear_screen():
+    tim.clear()
+    tim.penup()
+    tim.home()
+    tim.pendown()
+
 
 screen.listen()
-
-screen.onkey(move_up, "Up")
-screen.onkey(move_down, "Down")
-screen.onkey(move_right, "Right")
-screen.onkey(move_left, "Left")
-
-screen.tracer(0)
-
-while True:
-    screen.update()
-    turtle.forward(MOMENT)
-    time.sleep(0.1)
+screen.onkey(move_forward, "Up")
+screen.onkey(move_backward, "Down")
+screen.onkey(turn_left, "Left")
+screen.onkey(turn_right, "Right")
+screen.onkey(clear_screen, "c")
 
 screen.exitonclick()
