@@ -2,18 +2,18 @@ from openpyxl import Workbook, load_workbook
 import re
 from datetime import datetime
 
+def get_workbook():
+    wb = load_workbook("Expense Tracker.xlsx")
+    ws = wb["Expense Tracker"]
+    return wb, ws
 
 def add_expense():
 
     try:
-        wb = load_workbook("Expense Tracker.xlsx")
-        ws = wb["Expense Tracker"]
+        wb , ws = get_workbook()
 
     except FileNotFoundError:
-
-        wb = Workbook()
-        ws = wb.active
-        ws.title = "Expense Tracker"
+        wb, ws = get_workbook()
 
         ws.append([
             "Date",
@@ -39,8 +39,21 @@ def add_expense():
         except ValueError:
             print("Invalid Date")
 
-    category = input("Enter Category: ")
-    description = input("Enter Description: ")
+    while True:
+        category = input("Enter Category: ").strip()
+
+        if category:
+            break
+
+        print("Category cannot be empty.")
+
+    while True:
+        description = input("Enter Description: ")
+
+        if category:
+            break
+
+        print("description cannot be empty.")
 
     while True:
         try:
@@ -65,8 +78,7 @@ def add_expense():
 def view_expenses():
 
     try:
-        wb = load_workbook("Expense Tracker.xlsx")
-        ws = wb["Expense Tracker"]
+        wb , ws = get_workbook()
 
         if ws.max_row == 1:
             print("No Expenses Found")
@@ -90,8 +102,7 @@ def view_expenses():
 def show_total_spent():
 
     try:
-        wb = load_workbook("Expense Tracker.xlsx")
-        ws = wb["Expense Tracker"]
+        wb , ws = get_workbook()
 
         if ws.max_row == 1:
             print("No Expenses Found")
