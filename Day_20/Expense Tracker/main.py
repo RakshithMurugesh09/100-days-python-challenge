@@ -1,56 +1,145 @@
-from openpyxl import load_workbook, Workbook
+from openpyxl import Workbook, load_workbook
+import re
+from datetime import datetime
 
-
-def create_excel_file():
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Expense Tracker"
-    ws.append(["Date", "Category", "Description", "Amount"])
-    wb.save('Expense Tracker.xlsx')
-
-    print("Expense Tracker Excel File has Created")
 
 def add_expense():
-    try:
-        wb = load_workbook('Expense Tracker.xlsx')
-        ws = wb["Expense Tracker"]
-        print("Try")
-    except FileNotFoundError:
-        create_excel_file()
-        print("Except")
 
-    user_date = input("Enter Date (DD-MM-YYYY): ")
+    try:
+        wb = load_workbook("Expense Tracker.xlsx")
+        ws = wb["Expense Tracker"]
+
+    except FileNotFoundError:
+
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Expense Tracker"
+
+        ws.append([
+            "Date",
+            "Category",
+            "Description",
+            "Amount"
+        ])
+
+    while True:
+
+        user_date = input("Enter Date (DD-MM-YYYY): ")
+
+        pattern = r"^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19\d{2}|20\d{2})$"
+
+        if not re.match(pattern, user_date):
+            print("Invalid Date Format")
+            continue
+
+        try:
+            datetime.strptime(user_date, "%d-%m-%Y")
+            break
+
+        except ValueError:
+            print("Invalid Date")
+
     category = input("Enter Category: ")
     description = input("Enter Description: ")
-    amount = input("Enter Amount: ")
+
+    while True:
+        try:
+            amount = float(input("Enter Amount: "))
+
+            if amount <= 0:
+                print("Amount must be greater than 0")
+                continue
+
+            break
+
+        except ValueError:
+            print("Invalid Amount")
+
     ws.append([user_date, category, description, amount])
-    wb.save('Expense Tracker.xlsx')
-    print("✅ Expense added successfully.")
+
+    wb.save("Expense Tracker.xlsx")
+
+    print("✅ Expense Added Successfully")
+
 
 def view_expenses():
+
     try:
-        wb = load_workbook('Expense Tracker.xlsx')
+        wb = load_workbook("Expense Tracker.xlsx")
         ws = wb["Expense Tracker"]
-        print("========== EXPENSES ==========")
-        for i in range (1, ws.max_row):
-            print("Date = ", ws.cell(row=i+1, column=1).value)
-            print("Category = ", ws.cell(row=i+1, column=2).value)
-            print("Description = ", ws.cell(row=i+1, column=3).value)
-            print("Amount = ", ws.cell(row=i+1, column=4).value)
-            print("\n ---------------------------------- \n")
+
+        if ws.max_row == 1:
+            print("No Expenses Found")
+            return
+
+        print("\n========== EXPENSES ==========\n")
+
+        for row in ws.iter_rows(min_row=2, values_only=True):
+
+            print(f"Date        : {row[0]}")
+            print(f"Category    : {row[1]}")
+            print(f"Description : {row[2]}")
+            print(f"Amount      : ₹{row[3]}")
+
+            print("-" * 30)
+
     except FileNotFoundError:
-        print("Expense Tracker Excel File has Not Created")
+        print("Expense Tracker Excel File Not Created")
+
 
 def show_total_spent():
+
     try:
-        wb = load_workbook('Expense Tracker.xlsx')
+        wb = load_workbook("Expense Tracker.xlsx")
         ws = wb["Expense Tracker"]
-        total_spent = sum(float(ws.cell(row=i+1, column=4).value) for i in range(1, ws.max_row))
-        print("Total Spent = ", total_spent)
+
+        if ws.max_row == 1:
+            print("No Expenses Found")
+            return
+
+        total = sum(
+            float(ws.cell(row=i, column=4).value)
+            for i in range(2, ws.max_row + 1)
+        )
+
+        print(f"\n💰 Total Spent = ₹{total:.2f}\n")
+
     except FileNotFoundError:
-        print("Expense Tracker Excel File has Not Created")
+        print("Expense Tracker Excel File Not Created")
 
 
-show_total_spent()
+def main():
+
+    while True:
+
+        print("""
+======== EXPENSE TRACKER ========
+
+1. Add Expense
+2. View Expenses
+3. Show Total Spent
+4. Exit
+
+===============================
+""")
+
+        choice = input("Enter Choice: ")
+
+        if choice == "1":
+            add_expense()
+
+        elif choice == "2":
+            view_expenses()
+
+        elif choice == "3":
+            show_total_spent()
+
+        elif choice == "4":
+            print("Thank You")
+            break
+
+        else:
+            print("Invalid Choice")
 
 
+main()
