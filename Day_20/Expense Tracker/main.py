@@ -1,19 +1,20 @@
 from openpyxl import Workbook, load_workbook
 import re
 from datetime import datetime
+import os
 
-def get_workbook():
-    wb = load_workbook("Expense Tracker.xlsx")
-    ws = wb["Expense Tracker"]
-    return wb, ws
+FILE_NAME = "Expense Tracker.xlsx"
 
 def add_expense():
 
     try:
-        wb , ws = get_workbook()
+        wb = load_workbook(FILE_NAME)
+        ws = wb["Expense Tracker"]
 
     except FileNotFoundError:
-        wb, ws = get_workbook()
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Expense Tracker"
 
         ws.append([
             "Date",
@@ -23,7 +24,6 @@ def add_expense():
         ])
 
     while True:
-
         user_date = input("Enter Date (DD-MM-YYYY): ")
 
         pattern = r"^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19\d{2}|20\d{2})$"
@@ -48,12 +48,12 @@ def add_expense():
         print("Category cannot be empty.")
 
     while True:
-        description = input("Enter Description: ")
+        description = input("Enter Description: ").strip()
 
-        if category:
+        if description:
             break
 
-        print("description cannot be empty.")
+        print("Description cannot be empty.")
 
     while True:
         try:
@@ -70,7 +70,7 @@ def add_expense():
 
     ws.append([user_date, category, description, amount])
 
-    wb.save("Expense Tracker.xlsx")
+    wb.save(FILE_NAME)
 
     print("✅ Expense Added Successfully")
 
@@ -78,22 +78,19 @@ def add_expense():
 def view_expenses():
 
     try:
-        wb , ws = get_workbook()
+        wb = load_workbook(FILE_NAME)
+        ws = wb["Expense Tracker"]
 
         if ws.max_row == 1:
             print("No Expenses Found")
             return
 
-        print("\n========== EXPENSES ==========\n")
-
         for row in ws.iter_rows(min_row=2, values_only=True):
 
-            print(f"Date        : {row[0]}")
+            print(f"\nDate        : {row[0]}")
             print(f"Category    : {row[1]}")
             print(f"Description : {row[2]}")
             print(f"Amount      : ₹{row[3]}")
-
-            print("-" * 30)
 
     except FileNotFoundError:
         print("Expense Tracker Excel File Not Created")
@@ -102,28 +99,27 @@ def view_expenses():
 def show_total_spent():
 
     try:
-        wb , ws = get_workbook()
+        wb = load_workbook(FILE_NAME)
+        ws = wb["Expense Tracker"]
 
         if ws.max_row == 1:
             print("No Expenses Found")
             return
 
-        total = sum(
-            float(ws.cell(row=i, column=4).value)
-            for i in range(2, ws.max_row + 1)
-        )
+        total = 0
 
-        print(f"\n💰 Total Spent = ₹{total:.2f}\n")
+        for row in ws.iter_rows(min_row=2, values_only=True):
+            total += float(row[3])
+
+        print(f"\n💰 Total Spent: ₹{total:.2f}")
 
     except FileNotFoundError:
         print("Expense Tracker Excel File Not Created")
 
 
-def main():
+while True:
 
-    while True:
-
-        print("""
+    print("""
 ======== EXPENSE TRACKER ========
 
 1. Add Expense
@@ -131,26 +127,25 @@ def main():
 3. Show Total Spent
 4. Exit
 
-===============================
+================================
 """)
 
-        choice = input("Enter Choice: ")
+    choice = input("Enter Choice: ")
 
-        if choice == "1":
-            add_expense()
+    if choice == "1":
+        add_expense()
 
-        elif choice == "2":
-            view_expenses()
+    elif choice == "2":
+        view_expenses()
 
-        elif choice == "3":
-            show_total_spent()
+    elif choice == "3":
+        show_total_spent()
 
-        elif choice == "4":
-            print("Thank You")
-            break
+    elif choice == "4":
+        print("Thank You")
+        break
 
-        else:
-            print("Invalid Choice")
+    else:
+        print("Invalid Choice")
 
-
-main()
+print(os.path.abspath(FILE_NAME))
