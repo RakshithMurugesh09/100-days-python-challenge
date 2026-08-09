@@ -3,100 +3,55 @@
 # Fibonacci Generator
 # ============================================
 
-
 def display_menu():
-    """
-    Display the main menu.
+    print("\n========== Fibonacci Generator ==========")
+    print("1. Generate Fibonacci Sequence")
+    print("2. Exit")
 
-    Returns:
-        str: User's menu choice.
-    """
-
-    # TODO:
-    # Display:
-    # 1. Generate Fibonacci Sequence
-    # 2. Exit
-
-    # TODO:
-    # Return user's choice
-
-    pass
+    return input("Enter your choice: ").strip()
 
 
 def get_number_of_terms():
-    """
-    Ask the user how many Fibonacci numbers to generate.
+    while True:
+        try:
+            number_of_terms = int(input("Enter number of terms: "))
 
-    Returns:
-        int: Number of terms.
-    """
+            if number_of_terms > 0:
+                return number_of_terms
 
-    # TODO:
-    # Keep asking until user enters
-    # a valid positive integer.
+            print("Please enter a positive number.")
 
-    pass
+        except ValueError:
+            print("Invalid input. Enter a valid number.")
 
 
 def fibonacci_generator(number_of_terms):
-    """
-    Generator function.
 
-    Args:
-        number_of_terms (int)
+    first_number = 0
+    second_number = 1
 
-    Yields:
-        int: Next Fibonacci number.
-    """
-
-    # TODO:
-    # Initialize the first two numbers.
-
-    # TODO:
-    # Generate Fibonacci numbers
-    # one at a time using yield.
-
-    pass
+    for _ in range(number_of_terms):
+        yield first_number
+        first_number, second_number = (second_number, first_number + second_number)
 
 
 def display_sequence(fibonacci_numbers):
-    """
-    Display all generated Fibonacci numbers.
 
-    Args:
-        fibonacci_numbers (list)
-    """
+    print("\n========== Fibonacci Sequence ==========")
 
-    # TODO:
-    # Print heading.
-
-    # TODO:
-    # Display every number neatly.
-
-    pass
+    for number in fibonacci_numbers:
+        print(number)
 
 
 def display_statistics(fibonacci_numbers):
-    """
-    Display sequence statistics.
 
-    Args:
-        fibonacci_numbers (list)
-    """
-
-    # TODO:
-    # Display:
-    # Total Numbers
-    # Sum
-    # Largest Number
-
-    pass
+    print("\n========== Statistics ==========")
+    print(f"Total Numbers : {len(fibonacci_numbers)}")
+    print(f"Sum           : {sum(fibonacci_numbers)}")
+    print(f"Largest Number: {max(fibonacci_numbers)}")
 
 
 def main():
-    """
-    Main program.
-    """
 
     while True:
 
@@ -104,44 +59,29 @@ def main():
 
         if choice == "1":
 
-            # TODO:
-            # Get number of terms.
+            number_of_terms = get_number_of_terms()
 
-            # TODO:
-            # Create an empty list.
+            fibonacci_numbers = []
 
-            # TODO:
-            # Loop through the generator.
+            for number in fibonacci_generator(number_of_terms):
+                fibonacci_numbers.append(number)
 
-            # TODO:
-            # Store each generated number.
+            display_sequence(fibonacci_numbers)
 
-            # TODO:
-            # Display the sequence.
-
-            # TODO:
-            # Display statistics.
-
-            pass
+            display_statistics(fibonacci_numbers)
 
         elif choice == "2":
 
-            # TODO:
-            # Print goodbye message.
-
+            print("\nThank you for using Fibonacci Generator. Goodbye!")
             break
 
         else:
 
-            # TODO:
-            # Invalid menu choice.
-
-            pass
+            print("\nInvalid choice. Please select 1 or 2.")
 
 
 # ============================================
 # Program Starts Here
 # ============================================
 
-if __name__ == "__main__":
-    main()
+main()
