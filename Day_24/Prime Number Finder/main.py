@@ -12,11 +12,11 @@ def display_menu():
             print("\n❌ Invalid choice. Please enter a number.")
 
 
-def get_number():
+def get_number(prompt):
     """Get a valid positive integer from the user."""
     while True:
         try:
-            user_number = int(input("Enter a number: "))
+            user_number = int(input(prompt))
 
             if user_number > 0:
                 return user_number
@@ -29,13 +29,10 @@ def get_number():
 
 def get_range():
     """Get a valid start and end range."""
-    print("\nEnter Range:")
-
-    start_number = get_number()
+    start_number = get_number("Enter starting number: ")
 
     while True:
-        print("Enter ending number:")
-        end_number = get_number()
+        end_number = get_number("Enter ending number: ")
 
         if end_number >= start_number:
             return start_number, end_number
@@ -65,7 +62,7 @@ def is_prime(number):
 def check_single_prime():
     """Check whether one number is prime."""
 
-    number = get_number()
+    number = get_number("Enter number: ")
 
     if is_prime(number):
         print(f"\n✅ {number} is a Prime Number.")
