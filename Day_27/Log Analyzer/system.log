@@ -1,0 +1,6 @@
+2026-08-14 09:00:01 INFO Server Started
+2026-08-14 09:05:12 WARNING CPU Usage High
+2026-08-14 09:10:45 ERROR Database Connection Failed
+2026-08-14 09:12:33 INFO User Login
+2026-08-14 09:15:20 ERROR Timeout Occurred
+2026-08-14 09:20:10 INFO Backup Completed
