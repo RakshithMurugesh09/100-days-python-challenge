@@ -1,7 +1,7 @@
 import turtle
 import pandas
 
-IMAGE = "blank_india_img.gif"
+IMAGE = "india_blank_map.gif"
 
 data = pandas.read_csv("india_states.csv")
 all_states = data.state.tolist()
