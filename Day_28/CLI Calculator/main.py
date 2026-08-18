@@ -3,100 +3,66 @@ import sys
 
 def validate_arguments():
     """
-    Validate the number of command-line arguments.
+    Validate command-line arguments.
 
     Expected format:
     python calculator.py <number1> <operator> <number2>
     """
-
-    # TODO:
-    # Check whether the user provided exactly 3 arguments
-    # apart from the program name.
-
-    # Hint:
-    # len(sys.argv) should be ______
+    if len(sys.argv) != 4:
+        sys.exit("Usage: python calculator.py <num1> <operator> <num2>")
 
 
 def convert_numbers():
     """
-    Convert the first and third command-line arguments
-    from strings into numbers.
+    Convert command-line arguments to numbers.
     """
-
-    # TODO:
-    # Get the first number from sys.argv
-    # Get the second number from sys.argv
-
-    # TODO:
-    # Convert both values using float()
-
-    # TODO:
-    # Handle ValueError
-
-    pass
+    try:
+        first_number = float(sys.argv[1])
+        second_number = float(sys.argv[3])
+        return first_number, second_number
+    except ValueError:
+        sys.exit("Error: Numbers must be valid.")
 
 
 def calculate(first_number, operator, second_number):
     """
-    Perform calculation based on the operator.
+    Perform calculation based on operator.
     """
+    if operator == "+":
+        return first_number + second_number
 
-    # TODO:
-    # Check the operator.
+    elif operator == "-":
+        return first_number - second_number
 
-    # if operator == "+":
-    #     ...
+    elif operator == "*":
+        return first_number * second_number
 
-    # elif operator == "-":
-    #     ...
+    elif operator == "/":
+        if second_number == 0:
+            sys.exit("Error: Cannot divide by zero.")
+        return first_number / second_number
 
-    # elif operator == "*":
-    #     ...
-
-    # elif operator == "/":
-    #     ...
-
-    # TODO:
-    # Before division, check whether second_number is 0.
-
-    # TODO:
-    # If operator is unsupported, display an error.
-
-    pass
+    else:
+        sys.exit("Error: Invalid operator. Use +, -, *, /")
 
 
 def display_result(result):
     """
-    Display the calculation result.
+    Display result.
     """
-
-    # TODO:
-    # Print the result in a user-friendly format.
-
-    pass
+    print(f"Result: {result}")
 
 
 def main():
-    """
-    Main program.
-    """
+    validate_arguments()
 
-    # Step 1:
-    # Validate command-line arguments
+    first_number, second_number = convert_numbers()
 
-    # Step 2:
-    # Convert numbers
+    operator = sys.argv[2]
 
-    # Step 3:
-    # Get operator from sys.argv
+    result = calculate(first_number,operator,second_number)
 
-    # Step 4:
-    # Calculate result
-
-    # Step 5:
-    # Display result
-
-    pass
+    display_result(result)
 
 
 if __name__ == "__main__":
