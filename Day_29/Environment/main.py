@@ -1,45 +1,45 @@
 import platform
 import requests
+import sys
 
 
 def get_python_version():
-    """Return the installed Python version."""
     return platform.python_version()
 
 
 def get_requests_version():
-    """Return the installed requests library version."""
     return requests.__version__
 
 
-def check_environment():
-    """Check whether Python and requests are available."""
-    try:
-        python_version = get_python_version()
-        requests_version = get_requests_version()
-        return True, python_version, requests_version
-    except Exception as e:
-        return False, str(e), None
+def get_environment_name():
+    if hasattr(sys, "real_prefix") or (hasattr(sys, "base_prefix") and sys.base_prefix != sys.prefix):
+        return sys.prefix.split("\\")[-1]
+    return "Global Python"
+
+
+def is_virtual_environment_active():
+    return sys.prefix != getattr(sys, "base_prefix", sys.prefix)
 
 
 def display_environment_info():
-    """Display environment information."""
-    status, python_version, requests_version = check_environment()
-
-    print("=" * 40)
+    print("=" * 50)
     print("Environment Information")
-    print("=" * 40)
+    print("=" * 50)
 
-    if status:
-        print(f"✅ Python Version   : {python_version}")
-        print(f"✅ Requests Version : {requests_version}")
-        print("\n🎉 Environment is working correctly!")
+    print(f"Python Version     : {get_python_version()}")
+    print(f"Requests Version   : {get_requests_version()}")
+    print(f"Environment Name   : {get_environment_name()}")
+    print(
+        f"Environment Active : {'Yes ✅' if is_virtual_environment_active() else 'No ❌'}"
+    )
+
+    if is_virtual_environment_active():
+        print("\n🎉 Virtual environment is working correctly!")
     else:
-        print(f"❌ Environment Error: {python_version}")
+        print("\n⚠️ Running on global Python installation.")
 
 
 def main():
-    """Main entry point."""
     display_environment_info()
 
 
