@@ -156,25 +156,7 @@ Rakshith
 - Managing sensitive credentials
 - Creating automated workflows
 
----
-
-## ▶️ How to Run
-
-### API Data Explorer
-
-```bash
-cd "APIData Explorer"
-python main.py
-```
-
-### Automated Happy Birthday Email
-
-```bash
-cd "Automated Happy Birthday Email"
-python main.py
-```
-
----
+--
 
 ## 🔒 Environment Variables
 
