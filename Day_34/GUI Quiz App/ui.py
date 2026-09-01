@@ -16,7 +16,7 @@ class QuizInterface:
                                                      width=280,
                                                      font=("Arial", 20, "italic"))
         self.score = Label(text="Score: 0",
-                           font=("Arial", 10),
+                           font=("Arial", 20),
                            bg=THEME_COLOR,
                            fg="WHITE")
 
