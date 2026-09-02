@@ -9,8 +9,8 @@
     
 
 - [My Process](#my-process)
-  - [Rain Alert App](#rain-alert-app-1)
-  - [System Command Manager](#system-command-manager-1)
+  - [Rain Alert App](#rain-alert-app)
+  - [System Command Manager](#system-command-manager)
   - [What I Learned](#what-i-learned)
 
 ## Overview
