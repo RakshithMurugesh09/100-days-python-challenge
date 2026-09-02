@@ -5,8 +5,8 @@
 - [Overview](#overview)
   - [Project](#projects)
     - [Rain Alert App](#https://github.com/RakshithMurugesh09/100-days-python-challenge/tree/main/Day_35/Rain%20Alert%20App)
-    - [System Command Manager](https://github.com/RakshithMurugesh09/100-days-python-challenge/tree/main/Day_35/Rain%20Alert%20App)
-
+    - [System Command Manager](https://github.com/RakshithMurugesh09/100-days-python-challenge/tree/main/Day_35/System%20Command%20Manager)
+    
 
 - [My Process](#my-process)
   - [Rain Alert App](#rain-alert-app-1)
