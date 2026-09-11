@@ -1,5 +1,3 @@
-
-
 import json
 from datetime import datetime
 import os
@@ -11,7 +9,7 @@ from google.oauth2.service_account import Credentials
 # CONFIGURATION
 # =========================
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
 
 
 SCOPES = [
@@ -29,7 +27,7 @@ SPREADSHEET_NAME = "My Workouts"
 
 def configure_gemini():
     """Create and return Gemini client."""
-    return genai.Client(api_key=GEMINI_API_KEY)
+    return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def get_exercise_data(client, exercise_text):
@@ -54,7 +52,13 @@ def get_exercise_data(client, exercise_text):
     - Duration must be in minutes.
     - Calories must be estimated.
     - Return valid JSON only.
-
+    
+    Person Data:
+    GENDER = Male
+    WEIGHT_KG = 50
+    HEIGHT_CM = 160
+    AGE = 25
+    
     Workout:
     {exercise_text}
     """
