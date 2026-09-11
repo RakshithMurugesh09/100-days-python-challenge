@@ -9,6 +9,17 @@ from google.oauth2.service_account import Credentials
 # CONFIGURATION
 # =========================
 
+GENDER = Male
+WEIGHT_KG = 50
+HEIGHT_CM = 160
+AGE = 25
+
+person_data = {
+    "gender": GENDER,
+    "weight": WEIGHT_KG,
+    "height": HEIGHT_CM,
+    "age": AGE,
+}
 
 
 
@@ -54,10 +65,7 @@ def get_exercise_data(client, exercise_text):
     - Return valid JSON only.
     
     Person Data:
-    GENDER = Male
-    WEIGHT_KG = 50
-    HEIGHT_CM = 160
-    AGE = 25
+    {person_data}
     
     Workout:
     {exercise_text}
