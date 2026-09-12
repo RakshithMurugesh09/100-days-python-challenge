@@ -12,7 +12,7 @@ SCOPES = [
 ]
 
 
-class GoogleSheet:
+class Spreadsheet:
     """Read and update destination data in Google Sheets."""
 
     def __init__(self):
@@ -32,16 +32,22 @@ class GoogleSheet:
         )
 
     def get_destination_data(self):
-        """
-        Retrieve all destination records from the worksheet.
 
-        The first row must contain headers:
-        City | IATA Code | Lowest Price
-        """
-        self.destination_data = self.sheet.get_all_records()
+        records = self.sheet.get_all_records()
+
+        self.destination_data = []
+
+        for row_num, row in enumerate(records, start=2):
+            self.destination_data.append({
+                "id": row_num,
+                "city": row["City"],
+                "iataCode": row["IATA Code"],
+                "lowestPrice": row["Lowest Price"]
+            })
+
         return self.destination_data
 
-    def update_iata_code(self, row_number, iata_code):
+    def update_iata_code(self, **kwargs):
         """
         Update the IATA Code column for one destination.
 
@@ -49,16 +55,14 @@ class GoogleSheet:
             row_number: Actual Google Sheets row number.
             iata_code: Airport or city IATA code, such as BLR.
         """
-        if not iata_code:
-            raise ValueError("IATA code cannot be empty.")
 
-        iata_code = iata_code.strip().upper()
+        row_id = kwargs["row_id"]
+        iata_code = kwargs["iata_code"]
 
-        # Column 2 represents column B: IATA Code
         self.sheet.update_cell(
-            row=row_number,
-            col=2,
-            value=iata_code
+            row_id,
+            2,
+            iata_code
         )
 
     def update_all_iata_codes(self, flight_data):
