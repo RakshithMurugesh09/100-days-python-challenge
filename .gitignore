@@ -4,6 +4,8 @@ __pycache__/
 
 # Virtual Environment
 .venv/
+.env
+service_account.json
 
 # PyCharm
 .idea/
