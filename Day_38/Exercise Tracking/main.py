@@ -9,7 +9,7 @@ from google.oauth2.service_account import Credentials
 # CONFIGURATION
 # =========================
 
-GENDER = Male
+GENDER = "Male"
 WEIGHT_KG = 50
 HEIGHT_CM = 160
 AGE = 25
@@ -72,7 +72,7 @@ def get_exercise_data(client, exercise_text):
     """
 
     response = client.models.generate_content(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         contents=prompt
     )
 
