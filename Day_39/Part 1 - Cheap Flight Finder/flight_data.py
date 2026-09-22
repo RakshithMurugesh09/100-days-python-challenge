@@ -1,14 +1,8 @@
-import airportsdata
+class FlightData:
 
-class FlightData():
-    def __init__(self):
-        self.airports = airportsdata.load()
-
-    def get_iata_code(self, city_name):
-        for code, info in self.airports.items():
-            if info["city"].lower() == city_name.lower() and info["iata"]:
-                return info["iata"]
-
-        return None
-
-
+    def __init__(self,price,origin_city,destination_city,departure_date,return_date):
+        self.price = price
+        self.origin_city = origin_city
+        self.destination_city = destination_city
+        self.departure_date = departure_date
+        self.return_date = return_date
