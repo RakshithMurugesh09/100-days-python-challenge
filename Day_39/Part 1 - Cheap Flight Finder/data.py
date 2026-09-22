@@ -1,26 +1,20 @@
-import os
 import requests
+import os
 from dotenv import load_dotenv
 
 load_dotenv()
-SHEETY_ENDPOINT = os.environ.get("SHEETY_ENDPOINT")
+class DataManager:
 
-class Spreadsheet:
     def __init__(self):
-        self.destination_data = []
+        self.endpoint = os.getenv("SHEETY_ENDPOINT")
 
     def get_destination_data(self):
-        response = requests.get(SHEETY_ENDPOINT)
+        response = requests.get(self.endpoint)
         response.raise_for_status()
+        return response.json()["prices"]
 
-        self.destination_data = response.json()["prices"]
-        return self.destination_data
-
-    def update_iata_code(self, row_id, iata_code):
-        body = {"price":{"iataCode": iata_code}}
-
-        response = requests.put(url=f"{SHEETY_ENDPOINT}/{row_id}", json=body)
-        response.raise_for_status()
-        return response.json()
+    def update_iata_code(self, row_id, code):
+        body = {"price": {"iataCode": code}}
+        requests.put(url=f"{self.endpoint}/{row_id}",json=body)
 
 
