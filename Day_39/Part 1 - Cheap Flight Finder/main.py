@@ -18,11 +18,8 @@ airports = airportsdata.load("IATA")
 for row in sheet_data:
 
     if row["iataCode"] == "":
-
         city = row["city"]
-
         for code, details in airports.items():
-
             if details["city"].lower() == city.lower():
                 row["iataCode"] = code
                 data_manager.update_iata_code(row["id"],code)
@@ -30,7 +27,6 @@ for row in sheet_data:
 
 # STEP 2
 for destination in sheet_data:
-
     flight = flight_search.search_flight(departure_id=ORIGIN_CITY_IATA,arrival_id=destination["iataCode"])
 
     if flight is None:
@@ -48,5 +44,4 @@ for destination in sheet_data:
         )
 
         notification_manager.send_email(message)
-
         print("Email Sent")

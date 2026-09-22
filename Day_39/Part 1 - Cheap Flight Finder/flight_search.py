@@ -2,18 +2,16 @@ from serpapi import GoogleSearch
 from datetime import datetime, timedelta
 import os
 from dotenv import load_dotenv
-
-load_dotenv()
-
 from flight_data import FlightData
 
+load_dotenv()
 
 class FlightSearch:
 
     def search_flight(self,departure_id,arrival_id):
 
         tomorrow = datetime.now() + timedelta(days=1)
-        six_months = datetime.now() + timedelta(days=180)
+
 
         params = {
             "engine": "google_flights",
