@@ -19,54 +19,59 @@ class DataSource(ABC):
 class APIDataSource(DataSource):
 
     def connect(self):
-        # TODO
-        pass
+        print("Connecting to API...")
 
     def read(self):
-        # TODO
-        pass
+        print("Reading data from API...")
+        return {"source": "API", "data": ["user1", "user2", "user3"]}
 
     def close(self):
-        # TODO
-        pass
+        print("Closing API connection...")
 
 
 class CSVDataSource(DataSource):
 
     def connect(self):
-        # TODO
-        pass
+        print("Opening CSV file...")
 
     def read(self):
-        # TODO
-        pass
+        print("Reading data from CSV...")
+        return [
+            {"id": 1, "name": "Rakshith"},
+            {"id": 2, "name": "John"}
+        ]
 
     def close(self):
-        # TODO
-        pass
+        print("Closing CSV file...")
 
 
 class JSONDataSource(DataSource):
 
     def connect(self):
-        # TODO
-        pass
+        print("Opening JSON file...")
 
     def read(self):
-        # TODO
-        pass
+        print("Reading data from JSON...")
+        return {
+            "employees": [
+                {"id": 101, "name": "Alice"},
+                {"id": 102, "name": "Bob"}
+            ]
+        }
 
     def close(self):
-        # TODO
-        pass
+        print("Closing JSON file...")
 
 
-def ingest(source):
-    # TODO
-    pass
+def ingest(source: DataSource):
+    source.connect()
+    data = source.read()
+    print("Data:", data)
+    source.close()
+    print("-" * 40)
 
 
 # Test your implementation
-# ingest(CSVDataSource())
-# ingest(APIDataSource())
-# ingest(JSONDataSource())
+ingest(CSVDataSource())
+ingest(APIDataSource())
+ingest(JSONDataSource())
