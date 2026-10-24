@@ -29,7 +29,6 @@ Day 45/
 # 🌐 Project 1: BeautifulSoup (BS4)
 
 ## 🎯 Objective
-
 The objective of this project is to understand how Python can read and extract information from HTML using the `BeautifulSoup` library.
 
 The project contains:
