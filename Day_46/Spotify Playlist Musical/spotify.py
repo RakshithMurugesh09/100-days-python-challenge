@@ -4,7 +4,7 @@ from main import song_names
 from dotenv import load_dotenv
 import os
 
-load_dotenv("spotfiy.env")
+load_dotenv('spotify.env')
 
 spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
     client_id=os.getenv("SPOTIPY_CLIENT_ID"),
