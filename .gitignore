@@ -6,7 +6,7 @@ __pycache__/
 .venv/
 .env
 service_account.json
-spotfiy.env
+**/spotify.env
 
 # PyCharm
 .idea/
