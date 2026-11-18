@@ -1,20 +1,49 @@
-import pytest
-from unittest.mock import Mock
+# Mocking multiple API responses
 
-def test_fetch_transactions():
-    api_client = Mock()
+def ingest(api_client):
+    first_batch = api_client.fetch_transactions(page=1)
+    second_batch = api_client.fetch_transactions(page=2)
 
-    api_client.fetch_transactions.return_value = []
+    return first_batch + second_batch
 
-    result = fetch_transactions(
-        api_client,
-        start_date="2026-11-01",
-        end_date="2026-11-18"
-    )
+# Creates a mock API client.
 
-    assert result == []
+from unittest.mock import Mock, call
+api_client = Mock()
 
-    api_client.fetch_transactions.assert_called_once_with(
-        start_date="2026-11-01",
-        end_date="2026-11-18"
-    )
+# Uses side_effect to return two different batches:
+# - First call: [{"id": 1}, {"id": 2}]
+# - Second call: [{"id": 3}, {"id": 4}]
+first_batch = [
+    {"id": 1},
+    {"id": 2}
+]
+
+second_batch = [
+    {"id": 3},
+    {"id": 4}
+]
+
+api_client.fetch_transactions.side_effect = [
+    first_batch,
+    second_batch
+]
+
+
+# Calls ingest(api_client).
+result = ingest(api_client)
+print(result)
+
+# Asserts that the final result contains four records.
+assert result == [{"id": 1},{"id": 2},{"id": 3},{"id": 4}]
+
+
+# Verifies the API was called exactly twice.
+assert api_client.fetch_transactions.call_count == 2
+
+
+# Verifies the first call used page=1 and the second used page=2.
+api_client.fetch_transactions.assert_has_calls([
+    call(page=1),
+    call(page=2)
+])
