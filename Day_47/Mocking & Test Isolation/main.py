@@ -1,49 +1,35 @@
-# Mocking multiple API responses
+# patch() (Important)
+import requests
 
-def ingest(api_client):
-    first_batch = api_client.fetch_transactions(page=1)
-    second_batch = api_client.fetch_transactions(page=2)
-
-    return first_batch + second_batch
-
-# Creates a mock API client.
-
-from unittest.mock import Mock, call
-api_client = Mock()
-
-# Uses side_effect to return two different batches:
-# - First call: [{"id": 1}, {"id": 2}]
-# - Second call: [{"id": 3}, {"id": 4}]
-first_batch = [
-    {"id": 1},
-    {"id": 2}
-]
-
-second_batch = [
-    {"id": 3},
-    {"id": 4}
-]
-
-api_client.fetch_transactions.side_effect = [
-    first_batch,
-    second_batch
-]
+def fetch_data():
+    response = requests.get("https://api.example.com/data")
+    return response.json()
 
 
-# Calls ingest(api_client).
-result = ingest(api_client)
-print(result)
+# Write a pytest test in test_main.py that:
+import pytest
+# 2. Imports patch from unittest.mock.
+from unittest.mock import patch
 
-# Asserts that the final result contains four records.
-assert result == [{"id": 1},{"id": 2},{"id": 3},{"id": 4}]
-
-
-# Verifies the API was called exactly twice.
-assert api_client.fetch_transactions.call_count == 2
+from main import fetch_data
 
 
-# Verifies the first call used page=1 and the second used page=2.
-api_client.fetch_transactions.assert_has_calls([
-    call(page=1),
-    call(page=2)
-])
+def test_fetch_data():
+
+    # Patch requests.get where it is used: main.requests.get
+    with patch("main.requests.get") as mock_get:
+
+        # Configure response.json()
+        mock_get.return_value.json.return_value = [
+            {"id": 1},
+            {"id": 2}
+        ]
+
+        # Call fetch_data()
+        result = fetch_data()
+
+        # Verify two records were returned
+        assert len(result) == 2
+
+        # Verify requests.get() was called exactly once
+        mock_get.assert_called_once()
