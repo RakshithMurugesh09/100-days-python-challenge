@@ -1,35 +1,27 @@
-# patch() (Important)
+# Mocking API failures with patch
+
 import requests
 
 def fetch_data():
     response = requests.get("https://api.example.com/data")
     return response.json()
-
-
-# Write a pytest test in test_main.py that:
 import pytest
-# 2. Imports patch from unittest.mock.
 from unittest.mock import patch
 
 from main import fetch_data
 
 
-def test_fetch_data():
+def test_fetch_data_timeout():
 
-    # Patch requests.get where it is used: main.requests.get
+    # Patch requests.get where main.py uses it
     with patch("main.requests.get") as mock_get:
 
-        # Configure response.json()
-        mock_get.return_value.json.return_value = [
-            {"id": 1},
-            {"id": 2}
-        ]
+        # Make requests.get() raise TimeoutError
+        mock_get.side_effect = TimeoutError("API timeout")
 
-        # Call fetch_data()
-        result = fetch_data()
+        # Verify fetch_data() raises TimeoutError
+        with pytest.raises(TimeoutError, match="API timeout"):
+            fetch_data()
 
-        # Verify two records were returned
-        assert len(result) == 2
-
-        # Verify requests.get() was called exactly once
+        # Verify API was called exactly once
         mock_get.assert_called_once()
